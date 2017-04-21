@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<iostream>
 #include<fstream>
-
+#include<conio.h>
 
 double beta = 0.001;
 double gamma = 0.1;
@@ -12,56 +12,49 @@ double tstep, nsteps;
 	double derivI(double tdummy, double sdummy, double idummy, double rdummy);
 	double derivR(double tdummy, double sdummy, double idummy, double rdummy);
 
-  // real :: s, i, r, t
-  // real :: tstep, nsteps
-
 using namespace std;
 
- 
+
  void main(){
-  int j;
+	int j;
 	double ss = 190;
 	double ii = 10;
 	double rr = 0;
 	double tt = 0;
   
-  tstep = 0.1;
-  nsteps = 1000;
+	  tstep = 0.1;
+	  nsteps = 1000;
   
-  	
-//write file
-ofstream myfile ("data_SIR.csv");
-  if (myfile.is_open())
-  {
-	//header
-    myfile << "time, S, I, R\n";
-	
-	//Loop #####
-		//call rk4 function
-		for(j = 1; j <= nsteps; j++){
-			 tt = j*tstep;
-			
-			//call rk4
-			rk4(&ss, &ii, &rr, &tt);
-			//write
-			myfile << tt <<"," << ss << "," << ii << "," << rr <<"\n";
-		}
-	
-	//done
-		myfile.close();
-		cout << "Output csv completed..." << endl;
 		
-  }
-  else
-  {	  
-	  cout << "Unable to open file";
-  }
- 
-  
-  
-
-  
-  
+	//write file
+	ofstream myfile ("data_SIR.csv");
+	  if (myfile.is_open())
+	  {
+		//header
+		myfile << "time, S, I, R\n";
+		
+		//Loop #####
+			//call rk4 function
+			for(j = 1; j <= nsteps; j++){
+				 tt = j*tstep;
+				
+				//call rk4
+				rk4(&ss, &ii, &rr, &tt);
+				//write
+				myfile << tt <<"," << ss << "," << ii << "," << rr <<"\n";
+			}
+		
+		//done
+			myfile.close();
+			cout << "Output csv completed..." << endl;
+			
+	  }
+	  else
+	  {	  
+		  cout << "Unable to open file";
+	  }
+	  _getch();
+	  
  }
  
 void rk4(double *ss, double *ii, double *rr, double *tt){
@@ -104,15 +97,9 @@ void rk4(double *ss, double *ii, double *rr, double *tt){
   *rr = r;
   *tt = t;
   
-  
-  
 }
 
 double derivS(double tdummy, double sdummy, double idummy, double rdummy){
-	// tdummy = tdummy;
-	// sdummy = sdummy;
-	// idummy = idummy;
-	// rdummy = rdummy;
 	return(-1.0*beta*sdummy*idummy);
   
 }
