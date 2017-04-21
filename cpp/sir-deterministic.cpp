@@ -27,7 +27,7 @@ using namespace std;
   
 		
 	//write file
-	ofstream myfile ("data_SIR.csv");
+	ofstream myfile ("data_sir_deterministic.csv");
 	  if (myfile.is_open())
 	  {
 		//header
