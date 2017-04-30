@@ -3,13 +3,23 @@
 #include<fstream>
 #include<conio.h>
 
-double beta = 0.001;
-double gamma = 0.1;  
-	// double tstep = 0.1;
-	// double nsteps = 1000;
-	double tstep = 0.001;
-	double nsteps = 100000;
+// double beta = 0.001;
+// double gamma = 0.1;  
+	// // double tstep = 0.1;
+	// // double nsteps = 1000;
+	// double tstep = 0.05;
+	// double nsteps = 20000;
 	  
+	double tstep = 0.05;
+	double nsteps = 4000;
+	
+double beta = 0.000095;
+double gamma = 0.33333; 
+	double ss = 10000;
+	double ii = 10;
+	double rr = 0;
+	double tt = 0;
+	
 	void rk4(double *ss, double *ii, double *rr, double *tt);
 	double derivS(double tdummy, double sdummy, double idummy, double rdummy);
 	double derivI(double tdummy, double sdummy, double idummy, double rdummy);
@@ -20,11 +30,6 @@ using namespace std;
 
  void main(){
 	int j;
-	double ss = 190;
-	double ii = 10;
-	double rr = 0;
-	double tt = 0;
-		
 	//write file
 	ofstream myfile ("data_sir_deterministic.csv");
 	  if (myfile.is_open())
